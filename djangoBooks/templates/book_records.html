@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Novelty Reads</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e5e5e5; /* Light gray background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+         h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            color: #2E8B57; /* Deep green color for the title */
+            margin: 40px 0 20px 100px; /* Updated margin to place the title on the left-top edge and move it a bit to the right */
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .books-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 30px; /* Adjust the gap value as per your preference */
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .book {
+            width: calc(20% - 40px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+        }
+        .book img {
+            width: 150px;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 5px 5px 5px 2px rgb(20, 40, 50);
+        }
+        .book h2, .book p {
+            color: #2E8B57; /* Deep green color for book titles */
+            margin: 0;
+        }
+
+        form {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        form input {
+            width: 80%;
+            padding: 8px;
+            margin-bottom: 15px;
+        }
+
+        form button {
+            padding: 10px 20px;
+            background-color: #2E8B57;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1 style="color: #2E8B57; font-size: 36px; font-weight: bold; text-shadow: 2px 2px 4px #444;">Novelty Reads</h1>
+
+        <!-- New Book Form -->
+        <!-- New Book Form -->
+<form id="newBookForm" enctype="multipart/form-data" method="post"> {% csrf_token %}
+    <label for="bookName">Book Name:</label>
+    <input type="text" id="bookName" name="bookName" required>
+
+    <label for="bookPrice">Book Price ($):</label>
+    <input type="number" id="bookPrice" name="bookPrice" required>
+
+    <label for="bookImage">Book Image:</label>
+    <input type="file" id="bookImage" name="bookImage" accept="image/*" required>
+
+    <button type="submit">Add New Book</button>
+</form>
+
+
+        <!-- Display Books -->
+        <div class="books-container">
+            {% for kitob in kitoblar %}
+                <div class="book">
+                    <img src="{{kitob.rasm.url}}" alt="Book Cover">
+                    <h2>{{ kitob.nom }}</h2>
+                    <p>{{kitob.narx}} $</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+        </div>
+    </div>
+</body>
+</html>
